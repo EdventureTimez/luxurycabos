@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LuxuryCabos — Two Collections. Six Residences. One Extraordinary Community.</title>
+<meta name="description" content="Curated ultra-luxury residences within Puerto Los Cabos. Two exclusive collections from $6.5M. A private advisory experience for discerning acquirers.">
+<meta property="og:title" content="LuxuryCabos — Ultra-Luxury Residences in Puerto Los Cabos">
+<meta property="og:description" content="Two collections. Six residences. One extraordinary community on the Sea of Cortez. From $6.5M USD.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   RESET
+   ═══════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:'Outfit',sans-serif;font-weight:300;background:var(--bg);color:var(--cream);overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer}
+
+/* ═══════════════════════════════════════════
+   PALETTE
+   ═══════════════════════════════════════════ */
+:root{
+  --bg:#0A1628;
+  --bg2:#0d1e35;
+  --bg3:#111f36;
+  --charcoal:#1A1A2E;
+  --cream:#F5F0E8;
+  --ivory:#FAF7F2;
+  --gold:#C5A55A;
+  --gold-h:#d4b96e;
+  --copper:#B87D4B;
+  --t60:rgba(245,240,232,.6);
+  --t40:rgba(245,240,232,.4);
+  --t20:rgba(245,240,232,.2);
+  --t10:rgba(245,240,232,.1);
+  --t05:rgba(245,240,232,.05);
+  --gold10:rgba(197,165,90,.1);
+  --gold20:rgba(197,165,90,.2);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Outfit',system-ui,sans-serif;
+}
+
+/* ═══════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════ */
+.container{max-width:1180px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem)}
+section{position:relative}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400}
+
+/* Label pattern */
+.eyebrow{font-family:var(--sans);font-size:.62rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.65rem;margin-bottom:.85rem}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--gold)}
+
+/* Gold divider */
+.rule{width:48px;height:1px;background:var(--gold);margin:1.25rem auto}
+
+/* Buttons */
+.btn{display:inline-block;padding:.8rem 2.2rem;font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;transition:all .35s;border:none;cursor:pointer}
+.btn-gold{background:var(--gold);color:var(--bg)}.btn-gold:hover{background:var(--gold-h);transform:translateY(-1px)}
+.btn-line{background:transparent;border:1px solid var(--gold);color:var(--gold)}.btn-line:hover{background:var(--gold);color:var(--bg)}
+.btn-cream{background:transparent;border:1px solid var(--t20);color:var(--cream)}.btn-cream:hover{border-color:var(--cream);color:var(--cream)}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════ */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}.d4{transition-delay:.46s}
+
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes fade-page{from{opacity:0}to{opacity:1}}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:1.4rem clamp(1.25rem,4vw,2.5rem);transition:all .45s}
+#nav.stuck{background:rgba(10,22,40,.96);backdrop-filter:blur(18px);padding-top:.75rem;padding-bottom:.75rem;box-shadow:0 1px 0 var(--t05)}
+.logo{cursor:pointer;user-select:none}
+.logo span{font-family:var(--serif);font-size:1.45rem;font-weight:600;letter-spacing:.04em;color:var(--cream)}
+.logo .g{color:var(--gold)}
+#nav ul{display:flex;gap:2rem;align-items:center}
+#nav ul a{font-size:.68rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--t60);transition:color .3s;cursor:pointer}
+#nav ul a:hover,#nav ul a.on{color:var(--gold)}
+.nav-btn{padding:.55rem 1.5rem;border:1px solid var(--gold);background:none;color:var(--gold);font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;transition:all .3s}
+.nav-btn:hover{background:var(--gold);color:var(--bg)}
+.burger{display:none;background:none;border:none;flex-direction:column;gap:5px;padding:.5rem;cursor:pointer}
+.burger i{width:22px;height:1px;background:var(--cream);display:block;transition:all .3s}
+
+/* Mobile Drawer */
+#drawer{position:fixed;inset:0;background:var(--bg);z-index:950;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;opacity:0;pointer-events:none;transition:opacity .35s}
+#drawer.open{opacity:1;pointer-events:all}
+#drawer a{font-family:var(--serif);font-size:1.8rem;color:var(--cream);cursor:pointer;transition:color .3s}
+#drawer a:hover{color:var(--gold)}
+#drawer .x{position:absolute;top:1.4rem;right:clamp(1.25rem,4vw,2.5rem);background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer}
+
+/* ═══════════════════════════════════════════
+   PLACEHOLDER IMAGES
+   ═══════════════════════════════════════════ */
+.ph{width:100%;height:100%;position:relative;display:flex;align-items:center;justify-content:center}
+.ph::after{content:attr(data-label);position:absolute;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--t20);background:rgba(0,0,0,.45);padding:.35rem .7rem;backdrop-filter:blur(3px);pointer-events:none;max-width:80%;text-align:center;line-height:1.5}
+/* Tonal gradients — warm cinematic, NO beachy blues */
+.ph-home{background:linear-gradient(170deg,#0A1628 0%,#12263f 35%,#1c3650 55%,#2b4a5e 75%,rgba(197,165,90,.08) 100%)}
+.ph-f1{background:linear-gradient(155deg,#0d1e35 0%,#193a52 50%,rgba(197,165,90,.06) 100%)}
+.ph-f2{background:linear-gradient(140deg,#12263f 0%,#1c3a55 60%,#24465c 100%)}
+.ph-f3{background:linear-gradient(135deg,#0d1e35 0%,#1a3550 50%,rgba(184,125,75,.08) 100%)}
+.ph-r1{background:linear-gradient(160deg,#1A1A2E 0%,#0A1628 40%,rgba(197,165,90,.06) 100%)}
+.ph-r2{background:linear-gradient(145deg,#12263f 0%,#1A1A2E 60%,rgba(197,165,90,.04) 100%)}
+.ph-r3{background:linear-gradient(130deg,#0d1e35 0%,#12263f 50%,rgba(184,125,75,.06) 100%)}
+.ph-about{background:linear-gradient(135deg,#12263f 0%,#0A1628 100%)}
+.ph-marina{background:linear-gradient(135deg,#0d1e35 0%,#1a3a55 50%,#244a60 100%)}
+.ph-comm{background:linear-gradient(140deg,#12263f 0%,#193a52 100%)}
+
+/* ═══════════════════════════════════════════
+   PAGES
+   ═══════════════════════════════════════════ */
+.page{display:none;min-height:100vh}
+.page.on{display:block;animation:fade-page .5s ease}
+
+/* ═══════════════════════════════════════════
+   HOME — HERO
+   ═══════════════════════════════════════════ */
+.hero{height:100vh;min-height:680px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,22,40,.15) 0%,rgba(10,22,40,.35) 55%,rgba(10,22,40,.82) 100%)}
+.hero-inner{position:relative;z-index:2;text-align:center;max-width:820px;padding:0 2rem}
+.hero-inner h1{font-size:clamp(2.2rem,5.2vw,3.8rem);line-height:1.08;font-weight:300;margin-bottom:1.15rem;color:var(--cream)}
+.hero-inner h1 em{font-style:italic;font-weight:400}
+.hero-tag{font-size:1rem;color:var(--t60);max-width:500px;margin:0 auto 2.4rem;line-height:1.85}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-scroll{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.hero-scroll span{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--t20)}
+.scroll-bar{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold),transparent);animation:drift 2.5s ease-in-out infinite}
+
+/* ═══════════════════════════════════════════
+   HOME — COLLECTIONS SPLIT
+   ═══════════════════════════════════════════ */
+.split-header{padding:6rem 0 4rem;text-align:center;background:var(--bg)}
+.split-header h2{font-size:clamp(1.6rem,3.2vw,2.5rem);margin-bottom:.8rem}
+.split-header p{font-size:.95rem;color:var(--t60);max-width:520px;margin:0 auto;line-height:1.8}
+
+.split{display:grid;grid-template-columns:1fr 1fr;background:var(--bg)}
+.split-card{position:relative;height:520px;overflow:hidden;cursor:pointer}
+.split-card-bg{position:absolute;inset:0;transition:transform .7s ease}
+.split-card:hover .split-card-bg{transform:scale(1.035)}
+.split-card-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.92) 0%,rgba(10,22,40,.3) 55%,rgba(10,22,40,.12) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(1.5rem,4vw,3rem);transition:background .4s}
+.split-card:hover .split-card-ov{background:linear-gradient(to top,rgba(10,22,40,.96) 0%,rgba(10,22,40,.4) 55%,rgba(10,22,40,.15) 100%)}
+.split-card h3{font-size:clamp(1.4rem,2.2vw,1.9rem);margin-bottom:.45rem}
+.split-card p{font-size:.88rem;color:var(--t60);line-height:1.75;max-width:340px;margin-bottom:1.1rem}
+.arrow-link{font-size:.64rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.4rem;transition:gap .3s}
+.split-card:hover .arrow-link{gap:.7rem}
+.arrow-link::after{content:'→'}
+
+/* ═══════════════════════════════════════════
+   HOME — STATS BAR
+   ═══════════════════════════════════════════ */
+.stats-bar{padding:4.5rem 0;background:var(--bg2);border-top:1px solid var(--t05);border-bottom:1px solid var(--t05)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center}
+.s-num{font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:300;color:var(--cream);letter-spacing:-.02em}
+.s-num b{font-weight:300;color:var(--gold)}
+.s-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--t40);margin-top:.3rem}
+
+/* ═══════════════════════════════════════════
+   HOME — INVEST TEASER
+   ═══════════════════════════════════════════ */
+.teaser{padding:6rem 0;background:var(--bg);text-align:center}
+.teaser h2{font-size:clamp(1.5rem,2.8vw,2.2rem);margin-bottom:.8rem}
+.teaser p{color:var(--t60);max-width:580px;margin:0 auto 2.2rem;line-height:1.85;font-size:.95rem}
+
+/* ═══════════════════════════════════════════
+   COLLECTION PAGES — SHARED
+   ═══════════════════════════════════════════ */
+.pg-hero{height:72vh;min-height:520px;display:flex;align-items:flex-end;position:relative;overflow:hidden}
+.pg-hero-bg{position:absolute;inset:0}
+.pg-hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.95) 0%,rgba(10,22,40,.35) 50%,rgba(10,22,40,.15) 100%)}
+.pg-hero-inner{position:relative;z-index:2;padding:0 clamp(1.25rem,4vw,2.5rem) clamp(3rem,6vw,5rem);max-width:1180px;margin:0 auto;width:100%}
+.pg-hero-inner h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;margin-bottom:.6rem}
+.pg-hero-inner .sub{font-size:1.05rem;color:var(--t60);max-width:560px;line-height:1.75}
+
+.sect{padding:clamp(4rem,8vw,6.5rem) 0;background:var(--bg)}
+.sect.alt{background:var(--bg2)}
+.sect.dark{background:var(--charcoal)}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.two-col.mid{align-items:center}
+.prose h2{font-size:clamp(1.4rem,2.5vw,2rem);line-height:1.18;margin-bottom:1.1rem}
+.prose p{font-size:.92rem;color:var(--t60);line-height:1.88;margin-bottom:1.1rem}
+.prose strong{color:var(--cream);font-weight:400}
+
+/* Spec boxes */
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin:1.8rem 0}
+.spec{padding:1.15rem;border:1px solid var(--t10);background:var(--t05)}
+.spec-val{font-family:var(--serif);font-size:1.4rem;color:var(--cream)}
+.spec-lbl{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--t40);margin-top:.15rem}
+
+/* Image box */
+.img-box{position:relative;height:480px;overflow:hidden}
+.img-box.tall{height:560px}
+.img-box .note{position:absolute;bottom:.85rem;left:.85rem;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t20);background:rgba(10,22,40,.7);padding:.25rem .55rem;z-index:2;backdrop-filter:blur(3px)}
+
+/* Feature list */
+.feat-list{display:flex;flex-direction:column;gap:1.15rem;margin:1.8rem 0}
+.feat{display:flex;gap:.85rem;padding-bottom:1.15rem;border-bottom:1px solid var(--t05)}
+.feat:last-child{border:none;padding-bottom:0}
+.feat-ico{width:34px;height:34px;border:1px solid var(--gold20);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.feat-ico svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.feat h4{font-family:var(--sans);font-size:.76rem;font-weight:500;letter-spacing:.06em;color:var(--cream);margin-bottom:.15rem}
+.feat p{font-size:.82rem;color:var(--t60);line-height:1.65}
+
+/* Gallery */
+.gal{display:grid;grid-template-columns:1.6fr 1fr;gap:1.25rem}
+.gal-item{position:relative;overflow:hidden;height:280px}
+.gal-item.big{grid-row:span 2;height:100%}
+
+/* ═══════════════════════════════════════════
+   INVESTMENT CASE PAGE
+   ═══════════════════════════════════════════ */
+.inv-hero{padding:clamp(7rem,12vw,10rem) 0 clamp(3rem,5vw,4.5rem);background:var(--charcoal);text-align:center}
+.inv-hero h1{font-size:clamp(2rem,4.2vw,3.2rem);font-weight:300;margin-bottom:.85rem}
+.inv-hero p{color:var(--t60);max-width:600px;margin:0 auto;font-size:1rem;line-height:1.85}
+
+.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;padding:4rem 0;background:var(--charcoal)}
+.d-card{padding:1.8rem;border:1px solid var(--t10);background:var(--t05);transition:border-color .3s}
+.d-card:hover{border-color:var(--gold20)}
+.d-card .d-title{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.d-card .d-num{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.3rem);color:var(--cream);font-weight:300;letter-spacing:-.01em;margin-bottom:.3rem}
+.d-card .d-num b{font-weight:300;color:var(--gold)}
+.d-card .d-insight{font-size:.82rem;color:var(--t60);line-height:1.72}
+
+.inv-prose{padding:4.5rem 0;background:var(--charcoal)}
+.inv-prose-inner{max-width:680px;margin:0 auto;text-align:left}
+.inv-prose-inner h2{font-size:clamp(1.4rem,2.2vw,1.8rem);margin-bottom:1.3rem;text-align:center}
+.inv-prose-inner p{font-size:.92rem;color:var(--t60);line-height:1.9;margin-bottom:1.15rem}
+
+.brands{padding:4.5rem 0;background:var(--bg);text-align:center;border-top:1px solid var(--t05)}
+.brands h3{font-size:clamp(1.1rem,1.8vw,1.4rem);margin-bottom:.6rem}
+.brands p{color:var(--t60);margin-bottom:2.2rem;font-size:.88rem}
+.brand-row{display:flex;justify-content:center;gap:clamp(1rem,2.5vw,2.5rem);flex-wrap:wrap}
+.brand-tag{padding:.75rem 1.3rem;border:1px solid var(--t10);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--t40);transition:border-color .3s}
+.brand-tag:hover{border-color:var(--gold20);color:var(--t60)}
+
+/* ═══════════════════════════════════════════
+   ABOUT PAGE
+   ═══════════════════════════════════════════ */
+.about{padding:clamp(7rem,12vw,9rem) 0 clamp(4rem,8vw,7rem);background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.about-img{position:relative;height:580px;overflow:hidden}
+.about-text h1{font-size:clamp(1.8rem,3.2vw,2.6rem);line-height:1.14;margin-bottom:1.3rem}
+.about-text p{font-size:.92rem;color:var(--t60);line-height:1.9;margin-bottom:1.1rem}
+.about-text blockquote{border-left:2px solid var(--gold);padding-left:1.4rem;margin:1.8rem 0;font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--cream);line-height:1.5;opacity:.85}
+.creds{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.8rem}
+.cred{padding:1.15rem;border:1px solid var(--t10)}
+.cred h4{font-family:var(--sans);font-size:.62rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.cred p{font-size:.82rem;color:var(--t60);line-height:1.65}
+
+/* ═══════════════════════════════════════════
+   PRIVATE BRIEFING PAGE
+   ═══════════════════════════════════════════ */
+.brief{padding:clamp(7rem,12vw,9rem) 0 clamp(4rem,8vw,7rem);background:var(--bg);min-height:100vh;display:flex;align-items:center}
+.brief-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.brief-info h1{font-size:clamp(1.8rem,3.2vw,2.6rem);line-height:1.14;margin-bottom:1rem}
+.brief-info p{font-size:.92rem;color:var(--t60);line-height:1.88;margin-bottom:1.1rem}
+.assurance{padding:1.3rem;border:1px solid var(--t10);background:var(--t05);margin-top:1.8rem}
+.assurance p{font-size:.82rem;color:var(--t60);line-height:1.72;margin:0}
+.brief-contact{margin-top:2rem;display:flex;flex-direction:column;gap:1.1rem}
+.bc{display:flex;align-items:center;gap:.85rem}
+.bc-ico{width:38px;height:38px;border:1px solid var(--t10);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bc-ico svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.bc-lbl{font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--t40)}
+.bc-val{font-size:.88rem;color:var(--cream);margin-top:.05rem}
+
+.brief-form{padding:clamp(1.5rem,3vw,2.5rem);border:1px solid var(--t10);background:var(--t05)}
+.brief-form h3{font-family:var(--serif);font-size:1.3rem;color:var(--cream);margin-bottom:.35rem}
+.brief-form .fnote{font-size:.78rem;color:var(--t40);margin-bottom:1.8rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:.85rem}
+.fg{display:flex;flex-direction:column;margin-bottom:.85rem}
+.fg label{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--t40);margin-bottom:.4rem}
+.fg input,.fg select,.fg textarea{padding:.78rem .9rem;border:1px solid var(--t10);background:var(--t05);color:var(--cream);font-family:var(--sans);font-size:.86rem;outline:none;transition:border-color .3s;-webkit-appearance:none;appearance:none;border-radius:0}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--t20)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23C5A55A' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.2rem}
+.fg select option{background:var(--bg);color:var(--cream)}
+.fg textarea{resize:vertical;min-height:80px}
+.f-submit{width:100%;padding:.9rem;background:var(--gold);color:var(--bg);font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;border:none;transition:all .3s}
+.f-submit:hover{background:var(--gold-h)}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8rem}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;margin-bottom:2.5rem}
+.ft-brand p{font-size:.78rem;color:var(--t40);max-width:260px;margin-top:.65rem;line-height:1.7}
+.ft-links{display:flex;gap:clamp(2rem,5vw,4rem)}
+.ft-col h4{font-family:var(--sans);font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem}
+.ft-col a{display:block;font-size:.78rem;color:var(--t40);margin-bottom:.45rem;transition:color .3s;cursor:pointer}
+.ft-col a:hover{color:var(--cream)}
+.ft-bot{border-top:1px solid var(--t05);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center}
+.ft-bot p{font-size:.65rem;color:var(--t20)}
+.ft-social{display:flex;gap:.6rem}
+.ft-social a{width:32px;height:32px;border:1px solid var(--t10);display:flex;align-items:center;justify-content:center;transition:border-color .3s}
+.ft-social a:hover{border-color:var(--gold)}
+.ft-social svg{width:13px;height:13px;fill:var(--t40)}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media(max-width:960px){
+  .split,.two-col,.about-grid,.brief-grid{grid-template-columns:1fr}
+  .data-grid{grid-template-columns:1fr}
+  .split-card{height:400px}
+  .gal{grid-template-columns:1fr}.gal-item.big{grid-row:auto;height:280px}
+  .ft-links{flex-direction:column;gap:1.5rem}
+}
+@media(max-width:680px){
+  #nav ul{display:none}
+  .burger{display:flex}
+  #nav .nav-btn{display:none}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .specs,.creds,.frow{grid-template-columns:1fr}
+  .img-box{height:320px}.img-box.tall{height:380px}
+  .about-img{height:360px}
+  .ft-top{flex-direction:column}
+  .ft-bot{flex-direction:column;gap:.75rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="logo" onclick="go('home')"><span>Luxury<span class="g">Cabos</span></span></div>
+  <ul>
+    <li><a onclick="go('founders')" data-p="founders">138 Founders</a></li>
+    <li><a onclick="go('ritz')" data-p="ritz">Ritz-Carlton Reserve</a></li>
+    <li><a onclick="go('invest')" data-p="invest">Why Los Cabos</a></li>
+    <li><a onclick="go('about')" data-p="about">About</a></li>
+  </ul>
+  <button class="nav-btn" onclick="go('briefing')">Private Briefing</button>
+  <button class="burger" onclick="$('#drawer').classList.add('open')"><i></i><i></i><i></i></button>
+</nav>
+
+<!-- Mobile Drawer -->
+<div id="drawer">
+  <button class="x" onclick="this.parentElement.classList.remove('open')">&#10005;</button>
+  <a onclick="go('home');$('#drawer').classList.remove('open')">Home</a>
+  <a onclick="go('founders');$('#drawer').classList.remove('open')">138 Founders</a>
+  <a onclick="go('ritz');$('#drawer').classList.remove('open')">Ritz-Carlton Reserve</a>
+  <a onclick="go('invest');$('#drawer').classList.remove('open')">Why Los Cabos</a>
+  <a onclick="go('about');$('#drawer').classList.remove('open')">About</a>
+  <a onclick="go('briefing');$('#drawer').classList.remove('open')">Private Briefing</a>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: HOME
+     ══════════════════════════════════════════════════════════ -->
+<div class="page on" id="pg-home">
+
+  <section class="hero">
+    <div class="hero-bg ph ph-home" data-label="Replace: Aerial Puerto Los Cabos at golden hour — cinematic photograph or slow video"></div>
+    <div class="hero-grad"></div>
+    <div class="hero-inner">
+      <div class="eyebrow" style="justify-content:center">Puerto Los Cabos &middot; Sea of Cortez</div>
+      <h1>Two Collections.<br>Six Residences.<br>One Extraordinary <em>Community.</em></h1>
+      <p class="hero-tag">A curated portfolio of ultra-luxury residences within Puerto Los Cabos — from pre-completion estates to completed Ritz-Carlton Reserve homes. Represented exclusively for discerning acquirers.</p>
+      <div class="hero-btns">
+        <button class="btn btn-gold" onclick="go('founders')">Explore 138 Founders</button>
+        <button class="btn btn-line" onclick="go('ritz')">The Ritz-Carlton Residences</button>
+      </div>
+    </div>
+    <div class="hero-scroll"><span>Scroll</span><div class="scroll-bar"></div></div>
+  </section>
+
+  <section class="split-header">
+    <div class="container rv">
+      <div class="eyebrow" style="justify-content:center">The Collections</div>
+      <h2>Two Paths to Ownership</h2>
+      <div class="rule"></div>
+      <p>Each collection offers a distinct acquisition strategy — from pre-completion positioning to immediate residency within the most exclusive enclave in the Baja Peninsula.</p>
+    </div>
+  </section>
+
+  <div class="split">
+    <div class="split-card rv" onclick="go('founders')">
+      <div class="split-card-bg ph ph-f1" data-label="Replace: 138 Founders rendering — best available exterior"></div>
+      <div class="split-card-ov">
+        <div class="eyebrow">Collection I</div>
+        <h3>138 Founders</h3>
+        <p>Pre-completion residences within the Fundadores beachfront enclave. Acquire with the rare privilege to shape your home's finishes and design. From $6.5M.</p>
+        <span class="arrow-link">Explore the Founder's Advantage</span>
+      </div>
+    </div>
+    <div class="split-card rv d2" onclick="go('ritz')">
+      <div class="split-card-bg ph ph-r1" data-label="Replace: Ritz-Carlton Reserve Residences — REAL exterior photo"></div>
+      <div class="split-card-ov">
+        <div class="eyebrow">Collection II</div>
+        <h3>The Ritz-Carlton<br>Reserve Residences</h3>
+        <p>Completed homes within The Enclaves at Zadún — one of only a handful of Ritz-Carlton Reserve designations worldwide. Three remain.</p>
+        <span class="arrow-link">Discover What Remains</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-row">
+        <div class="rv"><div class="s-num">$1.59<b>B</b></div><div class="s-label">Annual Market Volume (2025)</div></div>
+        <div class="rv d1"><div class="s-num">+12<b>%</b></div><div class="s-label">Year-Over-Year Growth</div></div>
+        <div class="rv d2"><div class="s-num">3.8<b>M</b></div><div class="s-label">Annual Visitors</div></div>
+        <div class="rv d3"><div class="s-num">6</div><div class="s-label">Residences Remaining</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="teaser">
+    <div class="container rv">
+      <div class="eyebrow" style="justify-content:center">Market Intelligence</div>
+      <h2>The Investment Case for Los Cabos</h2>
+      <div class="rule"></div>
+      <p>In a market averaging $854K per transaction, these residences represent the ultra-premium tier of a $1.59 billion annual market with 12% year-over-year growth and structural supply constraints that protect long-term value.</p>
+      <button class="btn btn-line" onclick="go('invest')">Review the Data</button>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: 138 FOUNDERS
+     ══════════════════════════════════════════════════════════ -->
+<div class="page" id="pg-founders">
+
+  <section class="pg-hero">
+    <div class="pg-hero-bg ph ph-f1" data-label="Replace: Best available 138 Founders rendering or construction-progress photograph"></div>
+    <div class="pg-hero-grad"></div>
+    <div class="pg-hero-inner">
+      <div class="eyebrow">Collection I &middot; Puerto Los Cabos</div>
+      <h1>Founder's Advantage.</h1>
+      <p class="sub">Acquire at pre-completion positioning within Puerto Los Cabos' most established beachfront enclave. A closing window for those who see what's coming.</p>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="container">
+      <div class="two-col mid">
+        <div class="prose rv">
+          <div class="eyebrow">The Opportunity</div>
+          <h2>Early Positioning in an Appreciating Asset</h2>
+          <p>The 138 Founders residences within the Fundadores neighborhood represent a rare pre-completion window — the opportunity to establish ownership before final delivery values take effect. This is not a concession. It is early access to one of the most desirable addresses in Los Cabos.</p>
+          <p>At this stage, acquirers hold a privilege that will not exist once construction completes: <strong>the ability to shape your residence.</strong> Finishes, layouts, materials — each home can be tailored to reflect the owner's vision. This level of customization disappears upon delivery.</p>
+          <p>Fundadores is a beachfront sub-community with dedicated beach club access, situated within the same 2,000-acre gated master plan as the Ritz-Carlton Reserve. The community has matured into one of the most established enclaves in Puerto Los Cabos.</p>
+          <div class="specs">
+            <div class="spec"><div class="spec-val">~3</div><div class="spec-lbl">Residences Remaining</div></div>
+            <div class="spec"><div class="spec-val">$6.5M+</div><div class="spec-lbl">Pre-Completion Positioning</div></div>
+            <div class="spec"><div class="spec-val">4 – 6</div><div class="spec-lbl">Bedrooms</div></div>
+            <div class="spec"><div class="spec-val">Bespoke</div><div class="spec-lbl">Finishes &amp; Materials</div></div>
+          </div>
+          <button class="btn btn-gold" onclick="go('briefing')">Request the Investment Summary</button>
+        </div>
+        <div class="img-box tall rv d2">
+          <div class="ph ph-f2" data-label="Replace: 138 Founders architectural rendering — interior or detail shot"></div>
+          <span class="note">Artist's Visualization &mdash; Pre-Completion</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect alt">
+    <div class="container">
+      <div class="two-col mid">
+        <div class="img-box rv">
+          <div class="ph ph-marina" data-label="Replace: Puerto Los Cabos marina or community lifestyle photo"></div>
+        </div>
+        <div class="prose rv d2">
+          <div class="eyebrow">The Community</div>
+          <h2>Puerto Los Cabos</h2>
+          <p>A 2,000-acre master-planned resort community on the Sea of Cortez, Puerto Los Cabos is the most significant private development on the Baja Peninsula. Established neighborhoods, world-class amenities, and a permanent resident community of accomplished families from across North America.</p>
+          <div class="feat-list">
+            <div class="feat">
+              <div class="feat-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8m-4-4h8"/></svg></div>
+              <div><h4>Signature Golf</h4><p>Jack Nicklaus and Greg Norman courses within the community gates</p></div>
+            </div>
+            <div class="feat">
+              <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+              <div><h4>Puerto Los Cabos Club</h4><p>Members-only dining, wellness, social amenities, and botanical gardens</p></div>
+            </div>
+            <div class="feat">
+              <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+              <div><h4>World-Class Marina</h4><p>Deep-water marina for sport fishing, sailing, and private yachts</p></div>
+            </div>
+            <div class="feat">
+              <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+              <div><h4>15 Minutes from SJD</h4><p>Nonstop flights from every major U.S. city. Private aviation available.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:2.5rem" class="rv">
+        <div class="eyebrow" style="justify-content:center">Gallery</div>
+        <h2 style="font-size:clamp(1.3rem,2.2vw,1.7rem)">A Vision Taking Shape</h2>
+      </div>
+      <div class="gal rv">
+        <div class="gal-item big"><div class="ph ph-f1" data-label="Replace: Founders Gallery 1 — large hero rendering"></div></div>
+        <div class="gal-item"><div class="ph ph-f3" data-label="Replace: Founders Gallery 2 — detail or interior"></div></div>
+        <div class="gal-item"><div class="ph ph-comm" data-label="Replace: Founders Gallery 3 — community or beach club"></div></div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem" class="rv"><button class="btn btn-gold" onclick="go('briefing')">Request the 138 Founders Investment Summary</button></div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: RITZ-CARLTON RESERVE
+     ══════════════════════════════════════════════════════════ -->
+<div class="page" id="pg-ritz">
+
+  <section class="pg-hero">
+    <div class="pg-hero-bg ph ph-r1" data-label="Replace: The Enclaves at Zadún — REAL photography, stunning exterior or living space"></div>
+    <div class="pg-hero-grad"></div>
+    <div class="pg-hero-inner">
+      <div class="eyebrow">Collection II &middot; The Enclaves at Zadún</div>
+      <h1>Three Remain.</h1>
+      <p class="sub">The Enclaves at Zadún — A Ritz-Carlton Reserve Residence. Completed and ready for private tours. The final chapter of an extraordinary collection.</p>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="container">
+      <div class="two-col mid">
+        <div class="prose rv">
+          <div class="eyebrow">Ritz-Carlton Reserve</div>
+          <h2>A Standard Held by Only a Handful Worldwide</h2>
+          <p>The Ritz-Carlton Reserve designation is bestowed upon properties of singular distinction — locations where the brand's most discerning guests discover something beyond expectation. There are only a handful of Reserve properties on earth. Zadún is one of them.</p>
+          <p>These residences are <strong>completed.</strong> This is not a rendering of what will be built — it is an invitation to walk through your future home today. Construction risk has been eliminated entirely. What remains is the decision.</p>
+          <p>Ownership within The Enclaves grants full access to the Ritz-Carlton service ecosystem: anticipatory concierge, in-residence dining, a dedicated residential management team, and an established rental program for returns when the residence is not in personal use.</p>
+          <div class="specs">
+            <div class="spec"><div class="spec-val">3</div><div class="spec-lbl">Residences Remaining</div></div>
+            <div class="spec"><div class="spec-val">3 – 5 BD</div><div class="spec-lbl">Homes &amp; Condominiums</div></div>
+            <div class="spec"><div class="spec-val">Completed</div><div class="spec-lbl">Ready for Private Tours</div></div>
+            <div class="spec"><div class="spec-val">Reserve</div><div class="spec-lbl">Highest Brand Tier</div></div>
+          </div>
+          <button class="btn btn-gold" onclick="go('briefing')">Schedule a Private Tour</button>
+        </div>
+        <div class="img-box tall rv d2">
+          <div class="ph ph-r2" data-label="Replace: Ritz-Carlton Residences — REAL interior or architecture photo"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect alt">
+    <div class="container">
+      <div class="two-col mid">
+        <div class="img-box rv">
+          <div class="ph ph-r3" data-label="Replace: Zadún resort — pool, wellness center, or restaurant (REAL photo)"></div>
+        </div>
+        <div class="prose rv d2">
+          <div class="eyebrow">The Zadún Experience</div>
+          <h2>Legendary Service, Extraordinary Living</h2>
+          <p>Zadún, a Ritz-Carlton Reserve, is a sanctuary where the desert meets the Sea of Cortez. The resort offers Sensei wellness programs, three distinctive restaurants, multiple infinity pools, a private beach, and the Ambassadors of the Environment program for families and younger guests.</p>
+          <div class="feat-list">
+            <div class="feat">
+              <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+              <div><h4>Anticipatory Concierge</h4><p>White-glove service that anticipates your needs — the Reserve standard of hospitality</p></div>
+            </div>
+            <div class="feat">
+              <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+              <div><h4>In-Residence Dining</h4><p>Private chef services and resort dining delivered to your home for intimate gatherings</p></div>
+            </div>
+            <div class="feat">
+              <div class="feat-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+              <div><h4>Rental Program</h4><p>Generate returns through the Ritz-Carlton managed rental program when not in residence</p></div>
+            </div>
+            <div class="feat">
+              <div class="feat-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+              <div><h4>Sensei Wellness</h4><p>World-class wellness programming, spa treatments, and guided experiences for body and mind</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:2.5rem" class="rv">
+        <div class="eyebrow" style="justify-content:center">Gallery</div>
+        <h2 style="font-size:clamp(1.3rem,2.2vw,1.7rem)">Completed. Photographed. Waiting.</h2>
+      </div>
+      <div class="gal rv">
+        <div class="gal-item big"><div class="ph ph-r1" data-label="Replace: Ritz Gallery — exterior REAL photo (large)"></div></div>
+        <div class="gal-item"><div class="ph ph-r2" data-label="Replace: Ritz Gallery — interior REAL photo"></div></div>
+        <div class="gal-item"><div class="ph ph-r3" data-label="Replace: Ritz Gallery — view or amenity REAL photo"></div></div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem" class="rv"><button class="btn btn-gold" onclick="go('briefing')">Request the Ritz-Carlton Residences Prospectus</button></div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: WHY LOS CABOS — THE INVESTMENT CASE
+     ══════════════════════════════════════════════════════════ -->
+<div class="page" id="pg-invest">
+
+  <section class="inv-hero">
+    <div class="container rv">
+      <div class="eyebrow" style="justify-content:center">Market Intelligence</div>
+      <h1>The Investment Case<br>for Los Cabos</h1>
+      <div class="rule"></div>
+      <p>A data-driven perspective for sophisticated acquirers evaluating the Baja Peninsula. All figures reflect verified 2025 market data.</p>
+    </div>
+  </section>
+
+  <section style="background:var(--charcoal)">
+    <div class="container data-grid">
+
+      <div class="d-card rv">
+        <div class="d-title">Annual Market Volume</div>
+        <div class="d-num">$1.59 <b>Billion</b></div>
+        <div class="d-insight">Baja California Sur's total real estate transaction volume. Institutional-grade liquidity in an established market operating at scale.</div>
+      </div>
+      <div class="d-card rv d1">
+        <div class="d-title">Year-Over-Year Growth</div>
+        <div class="d-num">+12<b>%</b></div>
+        <div class="d-insight">Consistent, non-speculative appreciation driven by structural demand — sustained across multiple market cycles.</div>
+      </div>
+      <div class="d-card rv d2">
+        <div class="d-title">Annual Visitors</div>
+        <div class="d-num">~3.8 <b>Million</b></div>
+        <div class="d-insight">Sustained demand driving rental income potential. Visitor volume has grown ~130% over the past decade — structural expansion, not a temporary surge.</div>
+      </div>
+      <div class="d-card rv d3">
+        <div class="d-title">Average Transaction</div>
+        <div class="d-num">$854<b>K</b></div>
+        <div class="d-insight">The region-wide average contextualizes our collections. At $6.5M+, these residences sit in the top fraction of the market.</div>
+      </div>
+      <div class="d-card rv">
+        <div class="d-title">Hotel Occupancy</div>
+        <div class="d-num">~70<b>%</b></div>
+        <div class="d-insight">With Mexico's leading average daily rate. Your asset performs even when you're not there — supporting the rental program investment thesis.</div>
+      </div>
+      <div class="d-card rv d1">
+        <div class="d-title">Projected Annual Appreciation</div>
+        <div class="d-num">3 – 5<b>%</b></div>
+        <div class="d-insight">Dollar-denominated growth in supply-constrained premium zones. Peninsula geography — ocean on both sides — creates natural barriers to oversupply.</div>
+      </div>
+      <div class="d-card rv d2">
+        <div class="d-title">Sold-to-List Ratio</div>
+        <div class="d-num">93 – 94<b>%</b></div>
+        <div class="d-insight">Pricing grounded in reality. Sellers achieve near-asking, confirming disciplined valuations and genuine demand at listed levels.</div>
+      </div>
+      <div class="d-card rv d3">
+        <div class="d-title">Airport Proximity</div>
+        <div class="d-num">15 <b>Minutes</b></div>
+        <div class="d-insight">Puerto Los Cabos to SJD International. 2.5 hours nonstop from Los Angeles. Private aviation services available.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="inv-prose">
+    <div class="container">
+      <div class="inv-prose-inner rv">
+        <h2>Why This Market, Why This Moment</h2>
+        <p>The Los Cabos real estate market has matured beyond speculation into strategic investment. Today's acquirers are sophisticated, data-driven, and evaluating sold comps before making decisions. The era of emotional purchases in Cabo has given way to a class of buyer who applies the same rigor they'd bring to a commercial real estate allocation or alternative asset.</p>
+        <p>The Baja Peninsula's geography creates natural supply constraints. Bounded by ocean on both sides with limited developable coastal land, the corridor between San Jos&eacute; del Cabo and Cabo San Lucas cannot expand indefinitely. Supply is structurally limited. Demand is not.</p>
+        <p>Mexico's emergence as a nearshoring hub and the normalization of remote work have expanded the buyer pool well beyond traditional vacation-home seekers. Founders, executives, and families in their prime earning years now view Los Cabos as both a lifestyle acquisition and a portfolio asset.</p>
+        <p>Transactions are conducted in U.S. dollars, reducing currency risk. Foreign ownership is straightforward through a fideicomiso (bank trust) — a government-sanctioned structure providing full property rights, backed by decades of legal precedent.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="brands">
+    <div class="container rv">
+      <div class="eyebrow" style="justify-content:center">Institutional Validation</div>
+      <h3>The Brands Entering Los Cabos</h3>
+      <p>The world's most discerning hospitality brands are making their own investment case — with capital.</p>
+      <div class="brand-row">
+        <div class="brand-tag">Park Hyatt</div>
+        <div class="brand-tag">Aman (Amanvari)</div>
+        <div class="brand-tag">St. Regis</div>
+        <div class="brand-tag">Conrad</div>
+        <div class="brand-tag">Ritz-Carlton Reserve</div>
+      </div>
+      <div style="margin-top:2.5rem"><button class="btn btn-gold" onclick="go('briefing')">Begin the Conversation</button></div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: ABOUT
+     ══════════════════════════════════════════════════════════ -->
+<div class="page" id="pg-about">
+
+  <section class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img rv">
+          <div class="ph ph-about" data-label="Replace: Professional environmental portrait — not a corporate headshot"></div>
+        </div>
+        <div class="about-text rv d2">
+          <div class="eyebrow">Your Advisor</div>
+          <h1>Your Advisor in Two Markets</h1>
+          <p>With deep roots in Chicago's real estate landscape and established expertise in Los Cabos, I bridge the gap most Cabo brokerages cannot. Your acquisition journey begins where you live and work — Chicago, Dallas, Los Angeles, New York — and I understand both that world and the world you're acquiring into.</p>
+          <p>This is not about selling residences. It's about providing the market intelligence, local relationships, and transactional expertise that allows accomplished individuals and families to make informed acquisition decisions with confidence.</p>
+          <blockquote>Most Cabo brokerages are local-only. An advisor who understands both the buyer's home market and the Los Cabos market is a rare and valuable position.</blockquote>
+          <p>Every residence in this portfolio has been personally vetted for construction quality, location value, developer credibility, and long-term appreciation potential. I represent only what I would acquire myself.</p>
+          <div class="creds">
+            <div class="cred"><h4>Chicago Base</h4><p>Licensed and active in the Chicago metropolitan market with established relationships across North Shore and Gold Coast</p></div>
+            <div class="cred"><h4>Los Cabos Expertise</h4><p>On-the-ground relationships with developers, attorneys, and the fideicomiso trust structure</p></div>
+            <div class="cred"><h4>Curated Portfolio</h4><p>Six residences. Two collections. One community. A private advisory, not a listing catalog.</p></div>
+            <div class="cred"><h4>White-Glove Service</h4><p>From initial briefing through closing and beyond — every detail handled with discretion</p></div>
+          </div>
+          <button class="btn btn-gold" onclick="go('briefing')" style="margin-top:2rem">Request a Private Briefing</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: PRIVATE BRIEFING
+     ══════════════════════════════════════════════════════════ -->
+<div class="page" id="pg-briefing">
+
+  <section class="brief">
+    <div class="container">
+      <div class="brief-grid">
+        <div class="brief-info rv">
+          <div class="eyebrow">Private Briefing</div>
+          <h1>Begin the Conversation.</h1>
+          <p>Whether you're evaluating an acquisition or ready to schedule a private tour, the next step is a confidential conversation. Share your interest below, and you'll receive a personal response within 24 hours.</p>
+          <p>This is not a newsletter. It is a direct line to your advisor.</p>
+          <div class="assurance">
+            <p>All inquiries are handled with complete discretion. No automated follow-ups. No third-party sharing. A personal response from your advisor — not a marketing team — within 24 hours.</p>
+          </div>
+          <div class="brief-contact">
+            <div class="bc">
+              <div class="bc-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+              <div><div class="bc-lbl">Direct Line</div><div class="bc-val">+1 (312) 555-0100</div></div>
+            </div>
+            <div class="bc">
+              <div class="bc-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+              <div><div class="bc-lbl">Email</div><div class="bc-val">private@luxurycabos.com</div></div>
+            </div>
+            <div class="bc">
+              <div class="bc-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><div class="bc-lbl">Offices</div><div class="bc-val">Chicago, IL &amp; San Jos&eacute; del Cabo, B.C.S.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="brief-form rv d2">
+          <h3>Request a Private Briefing</h3>
+          <p class="fnote">You'll receive a personal response — not an automated email — within 24 hours.</p>
+          <form id="briefForm">
+            <div class="frow">
+              <div class="fg"><label>First Name</label><input type="text" required></div>
+              <div class="fg"><label>Last Name</label><input type="text" required></div>
+            </div>
+            <div class="frow">
+              <div class="fg"><label>Email</label><input type="email" required></div>
+              <div class="fg"><label>Phone</label><input type="tel"></div>
+            </div>
+            <div class="fg">
+              <label>I'm Interested In</label>
+              <select>
+                <option value="">Select a collection</option>
+                <option>138 Founders — Pre-Completion Residences</option>
+                <option>Ritz-Carlton Reserve — The Enclaves at Zadún</option>
+                <option>Both Collections</option>
+                <option>General Market Consultation</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>When are you next visiting Los Cabos?</label>
+              <select>
+                <option value="">Select a timeframe</option>
+                <option>Within 30 days</option>
+                <option>Within 90 days</option>
+                <option>Later this year</option>
+                <option>No immediate plans</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Anything we should know?</label>
+              <textarea placeholder="Timeline, questions, or specific interests — optional"></textarea>
+            </div>
+            <button type="submit" class="f-submit">Submit Private Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="logo" onclick="go('home')"><span>Luxury<span class="g">Cabos</span></span></div>
+        <p>Two curated collections of residences within Puerto Los Cabos. Represented exclusively for discerning acquirers. Chicago &amp; Los Cabos.</p>
+      </div>
+      <div class="ft-links">
+        <div class="ft-col">
+          <h4>Collections</h4>
+          <a onclick="go('founders')">138 Founders</a>
+          <a onclick="go('ritz')">Ritz-Carlton Reserve</a>
+          <a onclick="go('invest')">Why Los Cabos</a>
+        </div>
+        <div class="ft-col">
+          <h4>Advisory</h4>
+          <a onclick="go('about')">About</a>
+          <a onclick="go('briefing')">Private Briefing</a>
+          <a href="mailto:private@luxurycabos.com">private@luxurycabos.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p>&copy; 2026 LuxuryCabos.com &mdash; All Rights Reserved &middot; Chicago, IL &amp; San Jos&eacute; del Cabo, B.C.S.</p>
+      <div class="ft-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+const $=s=>document.querySelector(s);
+
+// Routing
+function go(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
+  const t=$('#pg-'+p);
+  if(t){t.classList.add('on');window.scrollTo(0,0);observe()}
+  document.querySelectorAll('#nav ul a').forEach(a=>a.classList.toggle('on',a.dataset.p===p));
+}
+
+// Sticky nav
+window.addEventListener('scroll',()=>$('#nav').classList.toggle('stuck',scrollY>50));
+
+// Scroll reveal
+function observe(){
+  const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv:not(.vis)').forEach(x=>io.observe(x));
+}
+observe();
+
+// Form
+$('#briefForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const b=$('#briefForm .f-submit');
+  b.textContent='THANK YOU \u2014 WE\u2019LL BE IN TOUCH WITHIN 24 HOURS';
+  b.style.cssText='background:transparent;border:1px solid var(--gold);color:var(--gold)';
+  b.disabled=true;
+});
+</script>
+
+</body>
+</html>
