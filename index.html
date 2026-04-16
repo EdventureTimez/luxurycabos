@@ -433,6 +433,13 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400}
 .gal-item{position:relative;overflow:hidden;height:280px}
 .gal-item.big{grid-row:span 2;height:100%}
 
+/* Landscape Gallery (128 Founders) */
+.gal-landscape{display:grid;grid-template-columns:1fr;gap:1.25rem}
+.gal-landscape .gal-hero{position:relative;overflow:hidden;height:clamp(280px,38vw,420px);border-radius:0}
+.gal-landscape .gal-hero .ph{width:100%;height:100%}
+.gal-landscape .gal-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.gal-landscape .gal-pair .gal-item{height:clamp(200px,26vw,300px)}
+
 /* ═══════════════════════════════════════════
    INVESTMENT CASE PAGE
    ═══════════════════════════════════════════ */
@@ -531,6 +538,9 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
   [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
   .split-card{height:400px}
   .gal{grid-template-columns:1fr}.gal-item.big{grid-row:auto;height:280px}
+  .gal-landscape .gal-pair{grid-template-columns:1fr}
+  .gal-landscape .gal-hero{height:240px}
+  .gal-landscape .gal-pair .gal-item{height:220px}
   .ft-links{flex-direction:column;gap:1.5rem}
 }
 @media(max-width:680px){
@@ -792,10 +802,12 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
         <div class="eyebrow" style="justify-content:center">Gallery</div>
         <h2 style="font-size:clamp(1.3rem,2.2vw,1.7rem)">A Vision Taking Shape</h2>
       </div>
-      <div class="gal rv">
-        <div class="gal-item big"><div class="ph ph-f1" style="background:url('photos/128-founders-gallery-1.png') center/cover"></div></div>
-        <div class="gal-item"><div class="ph ph-f3" style="background:url('photos/128-founders-gallery-2.png') center/cover"></div></div>
-        <div class="gal-item"><div class="ph ph-comm" style="background:url('photos/128-founders-gallery-3.png') center/cover"></div></div>
+      <div class="gal-landscape rv">
+        <div class="gal-hero"><div class="ph ph-f1" style="background:url('photos/128-founders-gallery-1.png') center/cover"></div></div>
+        <div class="gal-pair">
+          <div class="gal-item"><div class="ph ph-f3" style="background:url('photos/128-founders-gallery-2.png') center/cover"></div></div>
+          <div class="gal-item"><div class="ph ph-comm" style="background:url('photos/128-founders-gallery-3.png') center/cover"></div></div>
+        </div>
       </div>
       <div style="text-align:center;margin-top:2.5rem" class="rv"><button class="btn btn-gold" onclick="go('briefing')">Request the 128 Founders Investment Summary</button></div>
     </div>
