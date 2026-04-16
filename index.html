@@ -297,6 +297,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400}
    ═══════════════════════════════════════════ */
 #nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:1.4rem clamp(1.25rem,4vw,2.5rem);transition:all .45s}
 #nav.stuck{background:rgba(10,22,40,.96);backdrop-filter:blur(18px);padding-top:.75rem;padding-bottom:.75rem;box-shadow:0 1px 0 var(--t05)}
+#nav.nav-light{background:rgba(10,22,40,.97);backdrop-filter:blur(18px);box-shadow:0 1px 0 rgba(0,0,0,.06)}
 .logo{cursor:pointer;user-select:none}
 .logo > span:first-child{font-family:var(--serif);font-size:1.45rem;font-weight:600;letter-spacing:.04em;color:var(--cream)}
 .logo > span:first-child .g{color:var(--gold)}
@@ -729,7 +730,7 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
 <div class="page" id="pg-founders">
 
   <section class="pg-hero">
-    <div class="pg-hero-bg ph ph-f1" style="background:url('photos/128-founders-hero.png') center/cover"></div>
+    <div class="pg-hero-bg ph ph-f1" style="background:url('photos/128-founders-hero.jpg') center/cover"></div>
     <div class="pg-hero-grad"></div>
     <div class="pg-hero-inner">
       <div class="eyebrow">Collection I &middot; Puerto Los Cabos</div>
@@ -767,7 +768,7 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
     <div class="container">
       <div class="two-col mid">
         <div class="img-box rv">
-          <div class="ph ph-marina" style="background:url('photos/puerto-los-cabos-marina.png') center/cover"></div>
+          <div class="ph ph-marina" style="background:url('photos/puerto_los_cabos_custom_map_clean_no_overlap.png') center/cover"></div>
         </div>
         <div class="prose rv d2">
           <div class="eyebrow">The Community</div>
@@ -803,10 +804,10 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
         <h2 style="font-size:clamp(1.3rem,2.2vw,1.7rem)">A Vision Taking Shape</h2>
       </div>
       <div class="gal-landscape rv">
-        <div class="gal-hero"><div class="ph ph-f1" style="background:url('photos/128-founders-gallery-1.png') center/cover"></div></div>
+        <div class="gal-hero"><div class="ph ph-f1" style="background:url('photos/128-Fundadores-San-Jose-del-Cabo-9.jpg') center/cover"></div></div>
         <div class="gal-pair">
-          <div class="gal-item"><div class="ph ph-f3" style="background:url('photos/128-founders-gallery-2.png') center/cover"></div></div>
-          <div class="gal-item"><div class="ph ph-comm" style="background:url('photos/128-founders-gallery-3.png') center/cover"></div></div>
+          <div class="gal-item"><div class="ph ph-f3" style="background:url('photos/128-Fundadores-San-Jose-del-Cabo-2.jpg') center/cover"></div></div>
+          <div class="gal-item"><div class="ph ph-comm" style="background:url('photos/128-Fundadores-San-Jose-del-Cabo-3.jpg') center/cover"></div></div>
         </div>
       </div>
       <div style="text-align:center;margin-top:2.5rem" class="rv"><button class="btn btn-gold" onclick="go('briefing')">Request the 128 Founders Investment Summary</button></div>
@@ -822,7 +823,7 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
 <div class="page" id="pg-ritz">
 
   <section class="pg-hero">
-    <div class="pg-hero-bg ph ph-r1" style="background:url('photos/ritz-carlton-zadun-hero.png') center/cover"></div>
+    <div class="pg-hero-bg ph ph-r1" style="background:url('photos/ritz-carlton-zadun-hero.jpg') center/cover"></div>
     <div class="pg-hero-grad"></div>
     <div class="pg-hero-inner">
       <div class="eyebrow">Collection II &middot; The Enclaves at Zadún</div>
@@ -895,9 +896,9 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
         <h2 style="font-size:clamp(1.3rem,2.2vw,1.7rem)">Completed. Photographed. Waiting.</h2>
       </div>
       <div class="gal rv">
-        <div class="gal-item big"><div class="ph ph-r1" style="background:url('photos/ritz-carlton-gallery-1.png') center/cover"></div></div>
-        <div class="gal-item"><div class="ph ph-r2" style="background:url('photos/ritz-carlton-gallery-2.png') center/cover"></div></div>
-        <div class="gal-item"><div class="ph ph-r3" style="background:url('photos/ritz-carlton-gallery-3.png') center/cover"></div></div>
+        <div class="gal-item big"><div class="ph ph-r1" style="background:url('photos/Ritz%20Carlton%20B-North-Enclaves-2.jpg') center/cover"></div></div>
+        <div class="gal-item"><div class="ph ph-r2" style="background:url('photos/Ritz%20Carlton%20B-North-Enclaves-3.jpg') center/cover"></div></div>
+        <div class="gal-item"><div class="ph ph-r3" style="background:url('photos/128-Fundadores-San-Jose-del-Cabo-8.jpg') center/cover"></div></div>
       </div>
       <div style="text-align:center;margin-top:2.5rem" class="rv"><button class="btn btn-gold" onclick="go('briefing')">Request the Ritz-Carlton Residences Prospectus</button></div>
     </div>
@@ -1342,6 +1343,9 @@ function go(p){
   if(t){t.classList.add('on');window.scrollTo(0,0);observe();resetCounters();animateCounters()}
   document.querySelectorAll('#nav ul a').forEach(a=>a.classList.toggle('on',a.dataset.p===p));
   document.title=pageTitles[p]||pageTitles.home;
+  // Give nav a dark bg on pages that start with light/cream sections
+  const lightPages=['about','briefing'];
+  $('#nav').classList.toggle('nav-light',lightPages.includes(p));
   history.pushState(null,null,'#'+p);
 }
 
