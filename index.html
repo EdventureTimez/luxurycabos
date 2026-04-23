@@ -32,7 +32,11 @@
 <meta name="twitter:description" content="128 Founders bespoke pre-completion estates and Ritz-Carlton Reserve residences at Zadún. Pricing upon request.">
 <meta name="twitter:image" content="https://luxurycabos.com/photos/og-cover.png">
 
+<!-- Google Search Console — replace YOUR_VERIFICATION_CODE with the code from GSC -->
+<!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE"> -->
 <link rel="canonical" href="https://luxurycabos.com">
+<link rel="alternate" hreflang="en" href="https://luxurycabos.com">
+<link rel="alternate" hreflang="x-default" href="https://luxurycabos.com">
 
 <!-- Favicons -->
 <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon.png">
@@ -82,7 +86,19 @@
   "makesOffer": [
     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "128 Founders Bespoke Pre-Completion Residences", "description": "Fully customizable residences within the Fundadores beachfront enclave in Puerto Los Cabos — private guest villas, personal spas, bespoke architecture. Pricing upon request."}},
     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ritz-Carlton Reserve Residences at Zadún", "description": "Completed ultra-luxury branded residences within The Enclaves at Zadún — one of only a handful of Ritz-Carlton Reserve designations worldwide."}}
-  ]
+  ],
+  "sameAs": [
+    "https://prentonrealty.com",
+    "https://www.instagram.com/prentonrealty",
+    "https://www.linkedin.com/company/prentonrealty",
+    "https://www.facebook.com/prentonrealty"
+  ],
+  "parentOrganization": {
+    "@type": "RealEstateAgent",
+    "name": "Prenton Realty",
+    "url": "https://prentonrealty.com",
+    "@id": "https://prentonrealty.com/#organization"
+  }
 }
 </script>
 
@@ -135,10 +151,21 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "128 Founders — Pre-Completion Residences",
-  "description": "Ultra-luxury pre-completion residences within the Fundadores beachfront enclave of Puerto Los Cabos. Acquire with the privilege to shape finishes and design before delivery.",
+  "name": "128 Founders — Bespoke Pre-Completion Residences",
+  "description": "Fully customizable ultra-luxury pre-completion residences within the Fundadores beachfront enclave of Puerto Los Cabos. Private guest villas, personal spas, bespoke architecture — every element shaped to the owner's vision. Pricing upon private consultation.",
+  "image": "https://luxurycabos.com/photos/collection-128-founders.png",
   "brand": {"@type": "Brand", "name": "128 Founders"},
-  "offers": {"@type": "Offer", "priceCurrency": "USD", "availability": "https://schema.org/LimitedAvailability", "description": "Bespoke pricing upon request — fully customizable residences", "seller": {"@id": "https://luxurycabos.com/#organization"}}
+  "category": "Ultra-Luxury Real Estate",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "6500000",
+    "highPrice": "15000000",
+    "offerCount": "3",
+    "availability": "https://schema.org/LimitedAvailability",
+    "description": "Bespoke pricing — each residence is fully customizable. Contact for private consultation.",
+    "seller": {"@id": "https://luxurycabos.com/#organization"}
+  }
 }
 </script>
 
@@ -149,8 +176,19 @@
   "@type": "Product",
   "name": "The Ritz-Carlton Reserve Residences at Zadún",
   "description": "Completed ultra-luxury branded residences within The Enclaves at Zadún — one of only a handful of Ritz-Carlton Reserve designations worldwide. Set on the Sea of Cortez in San José del Cabo.",
+  "image": "https://luxurycabos.com/photos/collection-ritz-carlton.png",
   "brand": {"@type": "Brand", "name": "Ritz-Carlton Reserve"},
-  "offers": {"@type": "Offer", "priceCurrency": "USD", "availability": "https://schema.org/LimitedAvailability", "seller": {"@id": "https://luxurycabos.com/#organization"}}
+  "category": "Ultra-Luxury Real Estate",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "4500000",
+    "highPrice": "12000000",
+    "offerCount": "3",
+    "availability": "https://schema.org/LimitedAvailability",
+    "description": "Completed residences — three remain. Contact for availability and pricing.",
+    "seller": {"@id": "https://luxurycabos.com/#organization"}
+  }
 }
 </script>
 
