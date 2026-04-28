@@ -1206,7 +1206,7 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
         <div class="brief-form rv d2">
           <h3>Request a Private Briefing</h3>
           <p class="fnote">You'll receive a personal response — not an automated email — within 24 hours.</p>
-          <form id="briefForm" action="https://formspree.io/f/{your-form-id}" method="POST">
+          <form id="briefForm" action="https://formspree.io/f/xrernlon" method="POST">
             <input type="hidden" name="_subject" value="New Private Briefing Request — LuxuryCabos.com">
             <div class="frow">
               <div class="fg"><label>First Name</label><input type="text" name="first_name" required></div>
@@ -1482,7 +1482,7 @@ $('#cabosSignup').addEventListener('submit',e=>{
   btn.disabled=true;
   const fd=new FormData(f);
   fd.append('_form_type','Email Subscription');
-  fetch('https://formspree.io/f/{your-form-id}',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+  fetch('https://formspree.io/f/xrernlon',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
   .then(r=>{
     if(r.ok){
       status.textContent='You\'re on the list. Watch for exclusive updates from LuxuryCabos.';
