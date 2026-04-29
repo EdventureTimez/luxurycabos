@@ -357,7 +357,8 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400}
 /* ═══════════════════════════════════════════
    PLACEHOLDER IMAGES
    ═══════════════════════════════════════════ */
-.ph{width:100%;height:100%;position:relative;display:flex;align-items:center;justify-content:center}
+.ph{width:100%;height:100%;position:relative;display:flex;align-items:center;justify-content:center;transition:transform .6s cubic-bezier(.25,.46,.45,.94),filter .6s cubic-bezier(.25,.46,.45,.94)}
+.img-box:hover .ph,.gal-item:hover .ph,.about-img:hover .ph{transform:scale(1.04);filter:brightness(1.08)}
 .ph::after{content:attr(data-label);position:absolute;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--t20);background:rgba(0,0,0,.45);padding:.35rem .7rem;backdrop-filter:blur(3px);pointer-events:none;max-width:80%;text-align:center;line-height:1.5}
 .ph:not([data-label])::after{display:none}
 /* Tonal gradients — warm cinematic, NO beachy blues */
@@ -1397,7 +1398,7 @@ function go(p){
   // Give nav a dark bg on pages that start with light/cream sections
   const lightPages=['about','briefing'];
   $('#nav').classList.toggle('nav-light',lightPages.includes(p));
-  history.pushState(null,null,'#'+p);
+  history.pushState(null,null,p==='home'?'/':'/'+p);
 }
 
 // Sticky nav
@@ -1504,13 +1505,19 @@ $('#cabosSignup').addEventListener('submit',e=>{
 });
 
 // Deep-link support
-window.addEventListener('DOMContentLoaded',()=>{
+function getPageFromURL(){
+  const path=location.pathname.replace(/^\//,'').replace(/\/$/,'');
   const hash=location.hash.replace('#','');
-  if(hash&&document.getElementById('pg-'+hash)){go(hash)}
+  if(hash&&document.getElementById('pg-'+hash)){return hash}
+  return path||'home';
+}
+window.addEventListener('DOMContentLoaded',()=>{
+  const page=getPageFromURL();
+  if(page&&document.getElementById('pg-'+page)){go(page)}
 });
 window.addEventListener('popstate',()=>{
-  const hash=location.hash.replace('#','');
-  if(hash&&document.getElementById('pg-'+hash)){go(hash)}
+  const page=getPageFromURL();
+  if(page&&document.getElementById('pg-'+page)){go(page)}else{go('home')}
 });
 </script>
 
