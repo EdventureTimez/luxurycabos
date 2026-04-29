@@ -475,11 +475,15 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400}
 /* Gallery */
 .gal{display:grid;grid-template-columns:1.6fr 1fr;gap:1.25rem}
 .gal-item{position:relative;overflow:hidden;height:280px}
+.gal-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:32px;background:linear-gradient(to bottom,transparent,var(--charcoal));z-index:1;pointer-events:none}
+.section-light .gal-item::after{background:linear-gradient(to bottom,transparent,var(--light-bg))}
 .gal-item.big{grid-row:span 2;height:100%}
 
 /* Landscape Gallery (128 Founders) */
 .gal-landscape{display:grid;grid-template-columns:1fr;gap:1.25rem}
 .gal-landscape .gal-hero{position:relative;overflow:hidden;height:clamp(280px,38vw,420px);border-radius:0}
+.gal-landscape .gal-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:32px;background:linear-gradient(to bottom,transparent,var(--charcoal));z-index:1;pointer-events:none}
+.section-light .gal-landscape .gal-hero::after{background:linear-gradient(to bottom,transparent,var(--light-bg))}
 .gal-landscape .gal-hero .ph{width:100%;height:100%}
 .gal-landscape .gal-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
 .gal-landscape .gal-pair .gal-item{height:clamp(200px,26vw,300px)}
@@ -946,8 +950,8 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
         <h2 style="font-size:clamp(1.3rem,2.2vw,1.7rem)">Completed. Photographed. Waiting.</h2>
       </div>
       <div class="gal rv">
-        <div class="gal-item big"><div class="ph ph-r1" style="background:url('photos/Ritz%20Carlton%20B-North-Enclaves-2.jpg') center 20%/cover"></div></div>
-        <div class="gal-item"><div class="ph ph-r2" style="background:url('photos/Ritz%20Carlton%20B-North-Enclaves-3.jpg') center 20%/cover"></div></div>
+        <div class="gal-item big"><div class="ph ph-r1" style="background:url('photos/Ritz%20Carlton%20B-North-Enclaves-2.jpg') center 10%/cover"></div></div>
+        <div class="gal-item"><div class="ph ph-r2" style="background:url('photos/Ritz%20Carlton%20B-North-Enclaves-3.jpg') center 10%/cover"></div></div>
         <div class="gal-item"><div class="ph ph-r3" style="background:url('photos/128-Fundadores-San-Jose-del-Cabo-8.jpg') center 20%/cover"></div></div>
       </div>
       <div style="text-align:center;margin-top:2.5rem" class="rv"><button class="btn btn-gold" onclick="go('briefing')">Request the Ritz-Carlton Residences Prospectus</button></div>
