@@ -1219,7 +1219,65 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
             </div>
             <div class="frow">
               <div class="fg"><label>Email</label><input type="email" name="email" required></div>
-              <div class="fg"><label>Phone</label><input type="tel" name="phone"></div>
+              <div class="fg"><label>Phone</label>
+                <div style="display:flex;gap:0">
+                  <select name="phone_country" id="phoneCountry" style="width:auto;min-width:90px;border-right:none;border-radius:0;padding-right:1.6rem;font-size:.8rem;flex-shrink:0">
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+52">🇲🇽 +52</option>
+                    <option disabled>───────</option>
+                    <option value="+93">🇦🇫 +93</option>
+                    <option value="+355">🇦🇱 +355</option>
+                    <option value="+213">🇩🇿 +213</option>
+                    <option value="+54">🇦🇷 +54</option>
+                    <option value="+61">🇦🇺 +61</option>
+                    <option value="+43">🇦🇹 +43</option>
+                    <option value="+973">🇧🇭 +973</option>
+                    <option value="+55">🇧🇷 +55</option>
+                    <option value="+1">🇨🇦 +1</option>
+                    <option value="+56">🇨🇱 +56</option>
+                    <option value="+86">🇨🇳 +86</option>
+                    <option value="+57">🇨🇴 +57</option>
+                    <option value="+506">🇨🇷 +506</option>
+                    <option value="+45">🇩🇰 +45</option>
+                    <option value="+20">🇪🇬 +20</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+91">🇮🇳 +91</option>
+                    <option value="+62">🇮🇩 +62</option>
+                    <option value="+353">🇮🇪 +353</option>
+                    <option value="+972">🇮🇱 +972</option>
+                    <option value="+39">🇮🇹 +39</option>
+                    <option value="+81">🇯🇵 +81</option>
+                    <option value="+82">🇰🇷 +82</option>
+                    <option value="+965">🇰🇼 +965</option>
+                    <option value="+60">🇲🇾 +60</option>
+                    <option value="+31">🇳🇱 +31</option>
+                    <option value="+64">🇳🇿 +64</option>
+                    <option value="+47">🇳🇴 +47</option>
+                    <option value="+507">🇵🇦 +507</option>
+                    <option value="+51">🇵🇪 +51</option>
+                    <option value="+63">🇵🇭 +63</option>
+                    <option value="+48">🇵🇱 +48</option>
+                    <option value="+351">🇵🇹 +351</option>
+                    <option value="+974">🇶🇦 +974</option>
+                    <option value="+7">🇷🇺 +7</option>
+                    <option value="+966">🇸🇦 +966</option>
+                    <option value="+65">🇸🇬 +65</option>
+                    <option value="+27">🇿🇦 +27</option>
+                    <option value="+34">🇪🇸 +34</option>
+                    <option value="+46">🇸🇪 +46</option>
+                    <option value="+41">🇨🇭 +41</option>
+                    <option value="+66">🇹🇭 +66</option>
+                    <option value="+90">🇹🇷 +90</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+598">🇺🇾 +598</option>
+                    <option value="+58">🇻🇪 +58</option>
+                  </select>
+                  <input type="tel" name="phone_number" id="phoneNumber" inputmode="numeric" pattern="[0-9]*" placeholder="Phone number" style="flex:1;border-radius:0">
+                </div>
+                <input type="hidden" name="phone" id="phoneCombined">
+              </div>
             </div>
             <div class="fg">
               <label>I'm Interested In</label>
@@ -1451,8 +1509,24 @@ function animateCounters(){
 }
 animateCounters();
 
+// Phone: strip non-numeric as user types
+const phoneInput=$('#phoneNumber');
+if(phoneInput){
+  phoneInput.addEventListener('input',()=>{
+    phoneInput.value=phoneInput.value.replace(/[^0-9]/g,'');
+  });
+}
+// Combine country code + number into hidden field before submit
+function combinePhone(){
+  const cc=$('#phoneCountry');
+  const pn=$('#phoneNumber');
+  const combined=$('#phoneCombined');
+  if(cc&&pn&&combined){combined.value=pn.value?cc.value+' '+pn.value:'';}
+}
+
 // Form
 $('#briefForm').addEventListener('submit',e=>{
+  combinePhone();
   e.preventDefault();
   const f=e.target;
   const b=$('#briefForm .f-submit');
