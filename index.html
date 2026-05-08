@@ -124,7 +124,7 @@
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurycabos.com"},
     {"@type": "ListItem", "position": 2, "name": "128 Founders", "item": "https://luxurycabos.com#founders"},
     {"@type": "ListItem", "position": 3, "name": "Ritz-Carlton Reserve", "item": "https://luxurycabos.com#ritz"},
-    {"@type": "ListItem", "position": 4, "name": "Why Los Cabos", "item": "https://luxurycabos.com#invest"},
+    {"@type": "ListItem", "position": 4, "name": "Market", "item": "https://luxurycabos.com/invest"},
     {"@type": "ListItem", "position": 5, "name": "About", "item": "https://luxurycabos.com#about"},
     {"@type": "ListItem", "position": 6, "name": "Private Briefing", "item": "https://luxurycabos.com#briefing"}
   ]
@@ -510,6 +510,14 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400}
 .inv-prose.section-light{background:var(--light)}
 .inv-prose.section-light .inv-prose-inner h2{color:var(--light-text)}
 .inv-prose.section-light .inv-prose-inner p{color:var(--light-sub)}
+.season-compare{display:flex;gap:1.5rem;align-items:stretch;justify-content:center}
+.season-col{flex:1;max-width:380px;padding:2rem;border:1px solid var(--t10);background:var(--t05)}
+.season-col.current{border-color:var(--gold20);background:rgba(197,165,90,.06)}
+.season-label{font-family:var(--serif);font-size:1.4rem;margin-bottom:.4rem;color:var(--cream)}
+.season-tag{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.season-stat{font-size:.88rem;color:var(--t60);padding:.55rem 0;border-bottom:1px solid var(--t10)}
+.season-stat span{color:var(--cream);font-weight:500}
+.season-vs{display:flex;align-items:center;font-family:var(--serif);font-size:1.2rem;color:var(--t40);padding:0 .5rem}
 
 .brands{padding:4.5rem 0;background:var(--bg);text-align:center;border-top:1px solid var(--t05)}
 .brands h3{font-size:clamp(1.1rem,1.8vw,1.4rem);margin-bottom:.6rem}
@@ -590,6 +598,9 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
   .split,.two-col,.about-grid,.brief-grid{grid-template-columns:1fr}
   .data-grid{grid-template-columns:1fr}
   [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
+  .season-compare{flex-direction:column;align-items:center}
+  .season-col{max-width:100%;width:100%}
+  .season-vs{padding:.5rem 0}
   .split-card{height:400px}
   .gal{grid-template-columns:1fr}.gal-item.big{grid-row:auto;height:280px}
   .gal-landscape .gal-pair{grid-template-columns:1fr}
@@ -659,7 +670,7 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
   <ul>
     <li><a onclick="go('founders')" data-p="founders">128 Founders</a></li>
     <li><a onclick="go('ritz')" data-p="ritz">Ritz-Carlton Reserve</a></li>
-    <li><a onclick="go('invest')" data-p="invest">Why Los Cabos</a></li>
+    <li><a onclick="go('invest')" data-p="invest">Market</a></li>
     <li><a onclick="go('about')" data-p="about">About</a></li>
   </ul>
   <button class="nav-btn" onclick="go('briefing')">Private Briefing</button>
@@ -672,7 +683,7 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
   <a onclick="go('home');$('#drawer').classList.remove('open')">Home</a>
   <a onclick="go('founders');$('#drawer').classList.remove('open')">128 Founders</a>
   <a onclick="go('ritz');$('#drawer').classList.remove('open')">Ritz-Carlton Reserve</a>
-  <a onclick="go('invest');$('#drawer').classList.remove('open')">Why Los Cabos</a>
+  <a onclick="go('invest');$('#drawer').classList.remove('open')">Market</a>
   <a onclick="go('about');$('#drawer').classList.remove('open')">About</a>
   <a onclick="go('briefing');$('#drawer').classList.remove('open')">Private Briefing</a>
 </div>
@@ -769,8 +780,8 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
       <div class="eyebrow" style="justify-content:center">Market Intelligence</div>
       <h2>The Investment Case for Los Cabos</h2>
       <div class="rule"></div>
-      <p>In a market averaging $854K per transaction, these residences represent the ultra-premium tier of a $1.59 billion annual market with 12% year-over-year growth and structural supply constraints that protect long-term value.</p>
-      <button class="btn btn-line" onclick="go('invest')">Review the Data</button>
+      <p>$1.59 billion in annual volume. $391 million under contract in Q1 2026 alone. The ultra-luxury segment continues to outperform — and our collections sit at the center of the growth corridor. See the full market report.</p>
+      <button class="btn btn-line" onclick="go('invest')">View Market Report</button>
     </div>
   </section>
 
@@ -962,78 +973,248 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
 
 
 <!-- ══════════════════════════════════════════════════════════
-     PAGE: WHY LOS CABOS — THE INVESTMENT CASE
+     PAGE: MARKET — LOS CABOS MARKET REPORT
      ══════════════════════════════════════════════════════════ -->
 <div class="page" id="pg-invest">
 
+  <!-- Hero -->
   <section class="inv-hero">
     <div class="container rv">
       <div class="eyebrow" style="justify-content:center">Market Intelligence</div>
-      <h1>The Investment Case<br>for Los Cabos</h1>
+      <h1>Los Cabos Market Report</h1>
       <div class="rule"></div>
-      <p>A data-driven perspective for sophisticated acquirers evaluating the Baja Peninsula. All figures reflect verified 2025 market data.</p>
+      <p>Season Alta 2025–2026. Data-driven insights for sophisticated acquirers evaluating the Baja Peninsula.</p>
+      <p style="font-size:.72rem;color:var(--t40);margin-top:1rem">Sources: BCS MLS · FITURCA Tourism Observatory · Berkshire Hathaway Baja RE · Data through Q1 2026</p>
     </div>
   </section>
 
+  <!-- Headline metrics -->
   <section class="section-light" style="padding:4rem 0">
     <div class="container data-grid" style="padding:0;background:transparent">
-
       <div class="d-card rv">
         <div class="d-title">Annual Market Volume</div>
         <div class="d-num">$1.59 <b>Billion</b></div>
-        <div class="d-insight">Baja California Sur's total real estate transaction volume. Institutional-grade liquidity in an established market operating at scale.</div>
+        <div class="d-insight">BCS total real estate volume in 2025 — 12% growth year-over-year. Institutional-grade liquidity in a mature market.</div>
       </div>
       <div class="d-card rv d1">
-        <div class="d-title">Year-Over-Year Growth</div>
-        <div class="d-num">+12<b>%</b></div>
-        <div class="d-insight">Consistent, non-speculative appreciation driven by structural demand — sustained across multiple market cycles.</div>
+        <div class="d-title">Properties Sold (2025)</div>
+        <div class="d-num">1,834</div>
+        <div class="d-insight">Average transaction: $854,409 USD. The market has transitioned from speculation to strategic, data-driven investment.</div>
       </div>
       <div class="d-card rv d2">
+        <div class="d-title">Q1 2026 Volume</div>
+        <div class="d-num">$391 <b>Million</b></div>
+        <div class="d-insight">Under contract in Q1 2026 — up 39% from Q4 2025. 350 properties transacted with strong buyer demand.</div>
+      </div>
+      <div class="d-card rv d3">
         <div class="d-title">Annual Visitors</div>
         <div class="d-num">~3.8 <b>Million</b></div>
-        <div class="d-insight">Sustained demand driving rental income potential. Visitor volume has grown ~130% over the past decade — structural expansion, not a temporary surge.</div>
+        <div class="d-insight">Fourth consecutive record year. Hotel occupancy 70–76% with Mexico's highest ADR at $440–$517/night.</div>
       </div>
-      <div class="d-card rv d3">
-        <div class="d-title">Average Transaction</div>
-        <div class="d-num">$854<b>K</b></div>
-        <div class="d-insight">The region-wide average contextualizes our collections. These bespoke residences sit in the ultra-premium tier of the market — pricing upon private consultation.</div>
-      </div>
-      <div class="d-card rv">
-        <div class="d-title">Hotel Occupancy</div>
-        <div class="d-num">~70<b>%</b></div>
-        <div class="d-insight">With Mexico's leading average daily rate. Your asset performs even when you're not there — supporting the rental program investment thesis.</div>
-      </div>
-      <div class="d-card rv d1">
-        <div class="d-title">Projected Annual Appreciation</div>
-        <div class="d-num">3 – 5<b>%</b></div>
-        <div class="d-insight">Dollar-denominated growth in supply-constrained premium zones. Peninsula geography — ocean on both sides — creates natural barriers to oversupply.</div>
-      </div>
-      <div class="d-card rv d2">
-        <div class="d-title">Sold-to-List Ratio</div>
-        <div class="d-num">93 – 94<b>%</b></div>
-        <div class="d-insight">Pricing grounded in reality. Sellers achieve near-asking, confirming disciplined valuations and genuine demand at listed levels.</div>
-      </div>
-      <div class="d-card rv d3">
-        <div class="d-title">Airport Proximity</div>
-        <div class="d-num">15 <b>Minutes</b></div>
-        <div class="d-insight">Puerto Los Cabos to SJD International. 2.5 hours nonstop from Los Angeles. Private aviation services available.</div>
-      </div>
-
     </div>
   </section>
 
+  <!-- Season comparison -->
+  <section class="sect alt">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:2.5rem" class="rv">
+        <div class="eyebrow" style="justify-content:center">Season Comparison</div>
+        <h2>Q1 2025 vs. Q1 2026</h2>
+        <p style="color:var(--t60);max-width:600px;margin:.8rem auto 0">The market remains strong but has shifted from explosive growth to selective, strategic acquisition.</p>
+      </div>
+      <div class="season-compare rv d1">
+        <div class="season-col">
+          <div class="season-label">Q1 2025</div>
+          <div class="season-tag">Explosive Growth</div>
+          <div class="season-stat"><span>$329.7M</span> volume</div>
+          <div class="season-stat"><span>+27.4%</span> YoY growth</div>
+          <div class="season-stat"><span>+56%</span> avg house price YoY</div>
+          <div class="season-stat"><span>+70%</span> houses sold (units)</div>
+        </div>
+        <div class="season-vs">vs.</div>
+        <div class="season-col current">
+          <div class="season-label">Q1 2026</div>
+          <div class="season-tag">Strong &amp; Selective</div>
+          <div class="season-stat"><span>$391M</span> under contract</div>
+          <div class="season-stat"><span>+39%</span> vs Q4 2025</div>
+          <div class="season-stat"><span>350</span> properties sold</div>
+          <div class="season-stat"><span>Buyer's</span> market advantage</div>
+        </div>
+      </div>
+      <p style="text-align:center;color:var(--t40);font-size:.82rem;margin-top:2rem;max-width:650px;margin-left:auto;margin-right:auto" class="rv d2">The shift: In 2021–23, buyers asked "How fast will this appreciate?" In 2026, sophisticated acquirers evaluate infrastructure timelines, community governance, and long-term wealth strategy.</p>
+    </div>
+  </section>
+
+  <!-- Ultra-luxury spotlight -->
+  <section class="section-light" style="padding:4rem 0">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:2.5rem" class="rv">
+        <div class="eyebrow" style="justify-content:center">Ultra-Luxury Segment</div>
+        <h2>The Engine of Value</h2>
+      </div>
+      <div class="data-grid" style="padding:0;background:transparent;grid-template-columns:repeat(3,1fr)">
+        <div class="d-card rv">
+          <div class="d-title">$2M–$5M Segment · Q1 2026</div>
+          <div class="d-num">38 <b>Sales</b></div>
+          <div class="d-insight">$117 million total — double-digit growth versus Q4 2025. This tier continues to outperform the broader market.</div>
+        </div>
+        <div class="d-card rv d1">
+          <div class="d-title">Largest Sale · Q1 2026</div>
+          <div class="d-num">$19.9<b>M</b></div>
+          <div class="d-insight">Four closings above $10 million in Q1 alone — confirming sustained ultra-high-net-worth demand in the corridor.</div>
+        </div>
+        <div class="d-card rv d2">
+          <div class="d-title">Chileno Bay Corridor</div>
+          <div class="d-num">$230<b>M+</b></div>
+          <div class="d-insight">Cumulative sales since November 2024. Premium coastal enclaves continue commanding premium pricing.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- San José del Cabo -->
+  <section class="inv-prose">
+    <div class="container">
+      <div class="inv-prose-inner rv">
+        <div class="eyebrow" style="justify-content:center;margin-bottom:1.5rem">Growth Story</div>
+        <h2>San Jos&eacute; del Cabo — The Emerging Center</h2>
+        <p>San Jos&eacute; del Cabo has emerged as the most dynamic zone in the municipality, with $711.8 million in total 2025 volume across all property types.</p>
+        <p>Average house prices in the San Jos&eacute; Corridor rose from $4.2M in 2024 to $5.88M in 2025 — a 40% increase in one year — driven by coordinated development, superior infrastructure, and a buyer profile increasingly composed of permanent residents and families with long-term horizons.</p>
+        <p>For buyers in our collections — both located within Puerto Los Cabos in the San Jos&eacute; corridor — this structural growth supports the long-term value thesis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Property type breakdown -->
+  <section class="section-light" style="padding:4rem 0">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:2.5rem" class="rv">
+        <div class="eyebrow" style="justify-content:center">By Property Type</div>
+        <h2>Where the Market Is Moving</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem" class="rv d1">
+        <div style="background:#fff;padding:2rem;border:1px solid var(--light-border)">
+          <h4 style="color:var(--copper);margin-bottom:.75rem;font-family:var(--serif);font-size:1.1rem">Houses — Market Driver</h4>
+          <p style="font-size:.85rem;color:var(--light-sub);line-height:1.75">639 transactions totaling $918M in 2025. Corridor average rose from $3.99M to $5.78M (+44%). Luxury zones — Palmilla, Querencia, Chileno — see sustained demand.</p>
+        </div>
+        <div style="background:#fff;padding:2rem;border:1px solid var(--light-border)">
+          <h4 style="color:var(--copper);margin-bottom:.75rem;font-family:var(--serif);font-size:1.1rem">Condominiums — Buyer's Market</h4>
+          <p style="font-size:.85rem;color:var(--light-sub);line-height:1.75">+37% in sales volume; average price ~$729K (+10%). High inventory creates negotiation leverage — 25 months of supply versus 19 for houses.</p>
+        </div>
+        <div style="background:#fff;padding:2rem;border:1px solid var(--light-border)">
+          <h4 style="color:var(--copper);margin-bottom:.75rem;font-family:var(--serif);font-size:1.1rem">Land — In Retreat</h4>
+          <p style="font-size:.85rem;color:var(--light-sub);line-height:1.75">Land sales declined ~41% in 2025. Buyers increasingly prefer completed, turnkey properties — exactly what our collections offer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inventory shift -->
+  <section class="sect alt">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:2.5rem" class="rv">
+        <div class="eyebrow" style="justify-content:center">Buyer Advantage</div>
+        <h2>The Inventory Shift</h2>
+        <p style="color:var(--t60);max-width:600px;margin:.8rem auto 0">Active inventory has more than doubled — the single most important structural change versus last season.</p>
+      </div>
+      <div class="data-grid" style="padding:0;background:transparent">
+        <div class="d-card rv">
+          <div class="d-title">One Year Ago</div>
+          <div class="d-num">~1,100 <b>Listings</b></div>
+          <div class="d-insight">Active inventory across houses and condos. Sellers had pricing power and limited competition.</div>
+        </div>
+        <div class="d-card rv d1">
+          <div class="d-title">Today</div>
+          <div class="d-num">2,500+ <b>Listings</b></div>
+          <div class="d-insight">More than double the options. More selection, more leverage, and more time to make informed decisions.</div>
+        </div>
+        <div class="d-card rv d2">
+          <div class="d-title">Days on Market</div>
+          <div class="d-num">5–6 <b>Months</b></div>
+          <div class="d-insight">Average across houses and condos. Well-priced properties in premium locations still move faster.</div>
+        </div>
+        <div class="d-card rv d3">
+          <div class="d-title">Sold-to-List Ratio</div>
+          <div class="d-num">93–94<b>%</b></div>
+          <div class="d-insight">Typical discount of 6–7% below list. Disciplined pricing still achieves near-ask — but buyers have room.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appreciation forecast -->
+  <section class="section-light" style="padding:4rem 0">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:2.5rem" class="rv">
+        <div class="eyebrow" style="justify-content:center">2026 Outlook</div>
+        <h2>Appreciation Forecast</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem" class="rv d1">
+        <div style="background:#fff;padding:2rem;border:1px solid var(--light-border);text-align:center">
+          <div style="font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.3rem);color:var(--copper);margin-bottom:.5rem">5–10<span style="font-size:.7em">%</span></div>
+          <div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);margin-bottom:.5rem">Well-Positioned Properties</div>
+          <p style="font-size:.82rem;color:var(--light-sub);line-height:1.72">Strategic locations with infrastructure, community management, and long-term demand fundamentals.</p>
+        </div>
+        <div style="background:#fff;padding:2rem;border:1px solid var(--light-border);text-align:center">
+          <div style="font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.3rem);color:var(--copper);margin-bottom:.5rem">3–5<span style="font-size:.7em">%</span></div>
+          <div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);margin-bottom:.5rem">Beachfront &amp; Branded</div>
+          <p style="font-size:.82rem;color:var(--light-sub);line-height:1.72">Sustained appreciation for supply-constrained coastal properties and branded residences — where our collections sit.</p>
+        </div>
+        <div style="background:#fff;padding:2rem;border:1px solid var(--light-border);text-align:center">
+          <div style="font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.3rem);color:var(--copper);margin-bottom:.5rem">-2–3<span style="font-size:.7em">%</span></div>
+          <div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);margin-bottom:.5rem">Oversupplied Condos</div>
+          <p style="font-size:.82rem;color:var(--light-sub);line-height:1.72">Mid-range condos face inventory pressure. This underscores why segment selection matters.</p>
+        </div>
+      </div>
+      <p style="text-align:center;color:var(--light-sub);font-size:.72rem;margin-top:1.5rem;font-style:italic" class="rv d2">Projections reflect third-party market analysis and are not guaranteed. Past performance is not indicative of future results.</p>
+    </div>
+  </section>
+
+  <!-- Structural support -->
+  <section class="sect alt">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:2.5rem" class="rv">
+        <div class="eyebrow" style="justify-content:center">Structural Support</div>
+        <h2>Why the Fundamentals Hold</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:900px;margin:0 auto" class="rv d1">
+        <div style="padding:1.5rem;border:1px solid var(--t10);background:var(--t05)">
+          <h4 style="color:var(--gold);margin-bottom:.5rem;font-family:var(--serif);font-size:1rem">Tourism Engine</h4>
+          <p style="font-size:.82rem;color:var(--t60);line-height:1.72">~$900M in luxury hospitality projects announced for 2025–2028. Expanding direct flights from the U.S., Canada, and Europe.</p>
+        </div>
+        <div style="padding:1.5rem;border:1px solid var(--t10);background:var(--t05)">
+          <h4 style="color:var(--gold);margin-bottom:.5rem;font-family:var(--serif);font-size:1rem">Cash Market Stability</h4>
+          <p style="font-size:.82rem;color:var(--t60);line-height:1.72">Los Cabos is primarily a cash market — no exposure to U.S. mortgage rate volatility. Stable peso/dollar exchange sustains demand.</p>
+        </div>
+        <div style="padding:1.5rem;border:1px solid var(--t10);background:var(--t05)">
+          <h4 style="color:var(--gold);margin-bottom:.5rem;font-family:var(--serif);font-size:1rem">Favorable Rates</h4>
+          <p style="font-size:.82rem;color:var(--t60);line-height:1.72">Banxico cut its reference rate to 7.00% in December 2025, reducing friction for the financing segment of the market.</p>
+        </div>
+        <div style="padding:1.5rem;border:1px solid var(--t10);background:var(--t05)">
+          <h4 style="color:var(--gold);margin-bottom:.5rem;font-family:var(--serif);font-size:1rem">Supply Constraints</h4>
+          <p style="font-size:.82rem;color:var(--t60);line-height:1.72">Peninsula geography — ocean on both sides — creates natural barriers. Developable coastal land is finite. Demand is not.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key takeaways -->
   <section class="inv-prose section-light">
     <div class="container">
       <div class="inv-prose-inner rv">
-        <h2>Why This Market, Why This Moment</h2>
-        <p>The Los Cabos real estate market has matured beyond speculation into strategic investment. Today's acquirers are sophisticated, data-driven, and evaluating sold comps before making decisions. The era of emotional purchases in Cabo has given way to a class of buyer who applies the same rigor they'd bring to a commercial real estate allocation or alternative asset.</p>
-        <p>The Baja Peninsula's geography creates natural supply constraints. Bounded by ocean on both sides with limited developable coastal land, the corridor between San Jos&eacute; del Cabo and Cabo San Lucas cannot expand indefinitely. Supply is structurally limited. Demand is not.</p>
-        <p>Mexico's emergence as a nearshoring hub and the normalization of remote work have expanded the buyer pool well beyond traditional vacation-home seekers. Founders, executives, and families in their prime earning years now view Los Cabos as both a lifestyle acquisition and a portfolio asset.</p>
-        <p>Transactions are conducted in U.S. dollars, reducing currency risk. Foreign ownership is straightforward through a fideicomiso (bank trust) — a government-sanctioned structure providing full property rights, backed by decades of legal precedent.</p>
+        <h2>Key Takeaways</h2>
+        <p>The market has matured. This is no longer a momentum play — it's strategic investment with a clear horizon. Buyers who approach Los Cabos with institutional rigor are finding value that emotional purchasers missed.</p>
+        <p>Record inventory means buyers have more negotiation power than at any point in the last three years. For qualified acquirers, this is an advantageous window.</p>
+        <p>The ultra-luxury segment — and branded residences in particular — continues to outperform. Peninsula geography limits supply. Tourism infrastructure keeps expanding. Dollar-denominated transactions remove currency risk.</p>
+        <p>Our collections sit at the intersection of every favorable trend: branded residences, beachfront positioning within Puerto Los Cabos, and the San Jos&eacute; del Cabo growth corridor.</p>
+      </div>
+      <div style="text-align:center;margin-top:2rem" class="rv d1">
+        <button class="btn btn-gold" onclick="go('briefing')">Request a Private Briefing</button>
       </div>
     </div>
   </section>
 
+  <!-- Brands -->
   <section class="brands section-light">
     <div class="container rv">
       <div class="eyebrow" style="justify-content:center">Institutional Validation</div>
@@ -1046,7 +1227,6 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
         <div class="brand-tag">Conrad</div>
         <div class="brand-tag">Ritz-Carlton Reserve</div>
       </div>
-      <div style="margin-top:2.5rem"><button class="btn btn-gold" onclick="go('briefing')">Begin the Conversation</button></div>
     </div>
   </section>
 
@@ -1056,48 +1236,42 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
       <div class="prose rv" style="max-width:800px;margin:0 auto;text-align:center">
         <div class="eyebrow" style="justify-content:center">Full-Service International Brokerage</div>
         <h2>We Handle the Entire Closing Process</h2>
-        <p>Buying in Mexico doesn't have to be complicated. We provide a full-service experience that mirrors the standards you expect in the United States — coordinating every detail so you can focus on the investment, not the paperwork.</p>
+        <p>Buying in Mexico doesn't have to be complicated. We provide a full-service experience that mirrors U.S. standards — coordinating every detail so you can focus on the investment, not the paperwork.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem" class="rv d1">
         <div style="background:var(--bg2);padding:2rem;border:1px solid var(--t05)">
           <h4 style="color:var(--gold);margin-bottom:.5rem;font-family:var(--serif);font-size:1.1rem">Legal &amp; Notarial</h4>
-          <p style="font-size:.85rem;color:var(--t60)">Trusted Mexican attorneys and notaries specializing in foreign-national transactions and fideicomiso (bank trust) structuring.</p>
+          <p style="font-size:.85rem;color:var(--t60)">Trusted attorneys and notaries specializing in foreign-national transactions and fideicomiso (bank trust) structuring.</p>
         </div>
         <div style="background:var(--bg2);padding:2rem;border:1px solid var(--t05)">
           <h4 style="color:var(--gold);margin-bottom:.5rem;font-family:var(--serif);font-size:1.1rem">Appraisals &amp; Inspections</h4>
-          <p style="font-size:.85rem;color:var(--t60)">Licensed appraisers, property assessors, and environmental inspections to ensure a fully informed acquisition.</p>
+          <p style="font-size:.85rem;color:var(--t60)">Licensed appraisers, property assessors, and environmental inspections for a fully informed acquisition.</p>
         </div>
         <div style="background:var(--bg2);padding:2rem;border:1px solid var(--t05)">
           <h4 style="color:var(--gold);margin-bottom:.5rem;font-family:var(--serif);font-size:1.1rem">Financing &amp; Structuring</h4>
-          <p style="font-size:.85rem;color:var(--t60)">Cross-border financing guidance, 1031 exchange considerations, and tax-efficient ownership structures for U.S.-based buyers.</p>
+          <p style="font-size:.85rem;color:var(--t60)">Cross-border financing guidance, 1031 exchange considerations, and tax-efficient ownership structures.</p>
         </div>
       </div>
-      <p style="text-align:center;margin-top:2rem;color:var(--t40);font-size:.85rem" class="rv d2">From title search to key handover — LuxuryCabos is your single point of contact.</p>
     </div>
   </section>
 
-  <!-- Developer Pricing Advantage -->
+  <!-- Cancun teaser -->
   <section class="sect section-light">
     <div class="container">
-      <div class="prose rv" style="max-width:800px;margin:0 auto;text-align:center">
-        <div class="eyebrow" style="justify-content:center">Insider Advantage</div>
-        <h2>Early Access Can Mean Up to 20% Savings</h2>
-        <p>Our direct relationships with developers in the Los Cabos corridor give clients access to pre-launch and early-phase acquisition — where bespoke positioning at the right stage of development has historically offered significant advantages over post-completion retail pricing. Timing is everything, and we know when to move.</p>
-        <button class="btn btn-gold" onclick="go('briefing')" style="margin-top:1.5rem">Ask About Pre-Launch Pricing</button>
+      <div style="max-width:700px;margin:0 auto;text-align:center;padding:3rem;background:#fff;border:1px solid var(--light-border)" class="rv">
+        <div style="font-size:2rem;margin-bottom:1rem">&#128274;</div>
+        <div class="eyebrow" style="justify-content:center">Confidential · Off-Market</div>
+        <h3 style="font-family:var(--serif);font-size:1.4rem;margin:.8rem 0;color:var(--light-text)">Hospitality Investment — Canc&uacute;n, Mexico</h3>
+        <p style="color:var(--light-sub);margin-bottom:1.5rem">Beyond Los Cabos, we are sourcing institutional-grade hospitality investment opportunities in Canc&uacute;n and the Riviera Maya. Current pipeline includes off-market assets available exclusively to qualified investors under NDA.</p>
+        <button class="btn btn-gold" onclick="go('briefing')">Inquire Under NDA</button>
       </div>
     </div>
   </section>
 
-  <!-- Cancun Investment Teaser -->
-  <section class="sect alt">
-    <div class="container">
-      <div style="max-width:700px;margin:0 auto;text-align:center;padding:3rem;background:var(--bg2);border:1px solid var(--gold20)" class="rv">
-        <div style="font-size:2rem;margin-bottom:1rem">&#128274;</div>
-        <div class="eyebrow" style="justify-content:center">Confidential · Off-Market</div>
-        <h3 style="font-family:var(--serif);font-size:1.4rem;margin:.8rem 0">Hospitality Investment — Cancún, Mexico</h3>
-        <p style="color:var(--t60);margin-bottom:1.5rem">Beyond Los Cabos, we are sourcing institutional-grade hospitality investment opportunities in Cancún and Mexico's Riviera Maya. Current pipeline includes off-market assets available exclusively to qualified investors under NDA.</p>
-        <button class="btn btn-gold" onclick="go('briefing')">Inquire Under NDA</button>
-      </div>
+  <!-- Sources -->
+  <section style="padding:2rem 0;background:var(--charcoal);border-top:1px solid var(--t10)">
+    <div class="container" style="text-align:center">
+      <p style="font-size:.72rem;color:var(--t40);line-height:1.7">Sources: Berkshire Hathaway HomeServices Baja Real Estate · Cabo Real Estate Services BCS MLS · Oceanside Real Estate Group · FITURCA Los Cabos Tourism Observatory. Data through Q1 2026, prepared May 2026. All projections reflect third-party market analysis and are not guaranteed. Past performance is not indicative of future results.</p>
     </div>
   </section>
 
@@ -1221,7 +1395,7 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
               <div class="fg"><label>Email</label><input type="email" name="email" required></div>
               <div class="fg"><label>Phone</label>
                 <div style="display:flex;gap:0">
-                  <select name="phone_country" id="phoneCountry" style="width:auto;min-width:90px;border-right:none;border-radius:0;padding-right:1.6rem;font-size:.8rem;flex-shrink:0">
+                  <select name="phone_country" id="phoneCountry" style="width:auto;min-width:72px;border-right:none;border-radius:0;padding:0.45rem 1.2rem 0.45rem 0.5rem;font-size:.75rem;flex-shrink:0">
                     <option value="+1">🇺🇸 +1</option>
                     <option value="+52">🇲🇽 +52</option>
                     <option disabled>───────</option>
@@ -1396,7 +1570,7 @@ footer{background:var(--bg);border-top:1px solid var(--t05);padding:3.5rem 0 1.8
           <h4>Collections</h4>
           <a onclick="go('founders')">128 Founders</a>
           <a onclick="go('ritz')">Ritz-Carlton Reserve</a>
-          <a onclick="go('invest')">Why Los Cabos</a>
+          <a onclick="go('invest')">Market</a>
         </div>
         <div class="ft-col">
           <h4>Advisory</h4>
@@ -1443,7 +1617,7 @@ const pageTitles={
   home:'LuxuryCabos — Ultra-Luxury Real Estate in Puerto Los Cabos | 128 Founders & Ritz-Carlton Reserve',
   founders:'128 Founders — Pre-Completion Residences in Puerto Los Cabos | LuxuryCabos',
   ritz:'Ritz-Carlton Reserve Residences at Zadún — The Enclaves, Puerto Los Cabos | LuxuryCabos',
-  invest:'Why Los Cabos — The Investment Case for Ultra-Luxury Residences | LuxuryCabos',
+  invest:'Los Cabos Market Report — 2026 Data & Investment Intelligence | LuxuryCabos',
   about:'About — Edward Sanchez & Prenton Realty | LuxuryCabos',
   briefing:'Request a Private Briefing — LuxuryCabos',
   privacy:'Privacy Policy | LuxuryCabos',
@@ -1608,8 +1782,8 @@ window.addEventListener('popstate',()=>{
 <p>The 128 Founders residences within the Fundadores beachfront enclave of Puerto Los Cabos offer a rare bespoke pre-completion opportunity. Acquirers hold the privilege to fully customize architecture, layouts, finishes, and spatial design — including private guest villas, personal beauty spas, home gyms, and more. Pricing upon request for qualified acquirers. Located within the same 2,000-acre gated master plan as the Ritz-Carlton Reserve.</p>
 <h2>Ritz-Carlton Reserve Residences at Zadún</h2>
 <p>Completed ultra-luxury branded residences within The Enclaves at Zadún — one of only a handful of Ritz-Carlton Reserve designations worldwide. Set on the Sea of Cortez in San José del Cabo.</p>
-<h2>Why Los Cabos</h2>
-<p>Los Cabos represents a $1.59 billion annual luxury real estate market with 12% year-over-year growth and structural supply constraints. 3.8 million annual visitors support one of North America's strongest resort-residence markets.</p>
+<h2>Los Cabos Market Report</h2>
+<p>Los Cabos represents a $1.59 billion annual market (2025) with 12% growth. Q1 2026 saw $391 million under contract. The ultra-luxury $2M–$5M segment recorded 38 sales totaling $117M. San José del Cabo corridor house prices rose 40% year-over-year. 3.8 million annual visitors support one of North America's strongest resort-residence markets.</p>
 <h2>Private Briefing</h2>
 <p>Contact: Edward Sanchez · Edward@PrentonRealty.com · WhatsApp +1 (331) 588-1703 · <a href="https://prentonrealty.com">Prenton Realty</a></p>
 </div>
